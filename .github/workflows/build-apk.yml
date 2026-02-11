@@ -52,7 +52,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
 
     steps:
       - name: Checkout code
@@ -75,17 +75,19 @@ jobs:
       - name: Build Release APK
         run: gradle assembleRelease
 
-      - name: Get version
+      - name: Get version and short SHA
         id: version
         run: |
           VERSION=$(grep 'versionName' app/build.gradle.kts | head -1 | sed 's/.*"\(.*\)".*/\1/')
+          SHORT_SHA=$(git rev-parse --short HEAD)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "short_sha=$SHORT_SHA" >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.version.outputs.version }}
-          name: Release v${{ steps.version.outputs.version }}
+          tag_name: v${{ steps.version.outputs.version }}-${{ steps.version.outputs.short_sha }}
+          name: Release v${{ steps.version.outputs.version }} (${{ steps.version.outputs.short_sha }})
           files: app/build/outputs/apk/release/*.apk
           generate_release_notes: true
         env:
