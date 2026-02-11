@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hevy2Garmin</string>
+    <string name="subtitle">Convert Hevy exports to Garmin format</string>
+    <string name="instructions">1. Export your workout data from Hevy (Settings → Export Data)\n\n2. Share the CSV file with this app, or tap the button below to select a file\n\n3. Save the converted Garmin-compatible CSV</string>
+    <string name="select_csv">Select Hevy CSV File</string>
+    <string name="export_garmin_csv">Export Garmin CSV</string>
+    <string name="save_garmin_csv">Save Garmin CSV</string>
+    <string name="waiting_for_file">Select a Hevy CSV export file to begin</string>
+    <string name="processing">Processing…</string>
+    <string name="no_data">No converted data available. Select a CSV file first.</string>
+    <string name="error_empty_csv">Error: The CSV file is empty or has an invalid format.</string>
+    <string name="error_no_file">No file received. Please share a CSV file from Hevy.</string>
+    <string name="conversion_success">Converted %1$d activities, %2$d exercises, %3$d sets</string>
+    <string name="import_success">Ready to export!\n\n%1$d activities, %2$d exercises, %3$d sets converted.</string>
+    <string name="import_title">Hevy CSV Import</string>
+    <string name="file_saved">File saved successfully!</string>
+    <string name="export_complete">Export complete!</string>
+    <string name="error_processing">Error: %1$s</string>
+    <string name="error_saving">Error saving file: %1$s</string>
+</resources>
