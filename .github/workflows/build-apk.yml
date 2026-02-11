@@ -32,6 +32,9 @@ jobs:
         with:
           gradle-version: '8.2'
 
+      - name: Generate signing keystore
+        run: keytool -genkeypair -v -keystore app/release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias hevy2garmin -storepass hevy2garmin -keypass hevy2garmin -dname "CN=Hevy2Garmin, O=Hevy2Garmin, L=Unknown, ST=Unknown, C=US"
+
       - name: Build Debug APK
         run: gradle assembleDebug
 
@@ -74,6 +77,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.2'
+
+      - name: Generate signing keystore
+        run: keytool -genkeypair -v -keystore app/release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias hevy2garmin -storepass hevy2garmin -keypass hevy2garmin -dname "CN=Hevy2Garmin, O=Hevy2Garmin, L=Unknown, ST=Unknown, C=US"
 
       - name: Build Release APK
         run: gradle assembleRelease
